@@ -1,0 +1,115 @@
+@model StudyNotes.Models.Note
+
+@{
+    ViewData["Title"] = "Dodaj belešku";
+}
+
+<div class="container mt-4">
+
+    <div class="container-box">
+
+        <h2 class="page-title">
+            📝 Dodaj novu belešku
+        </h2>
+
+        <form asp-action="Create"
+              method="post"
+              enctype="multipart/form-data">
+
+            <div class="mb-3">
+                <label asp-for="Title" class="form-label">
+                    Naslov beleške
+                </label>
+
+                <input asp-for="Title"
+                       class="form-control"
+                       placeholder="Unesite naslov beleške" />
+
+                <span asp-validation-for="Title"
+                      class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Content" class="form-label">
+                    Sadržaj beleške
+                </label>
+
+                <textarea asp-for="Content"
+                          class="form-control"
+                          rows="6"
+                          placeholder="Unesite sadržaj beleške"></textarea>
+
+                <span asp-validation-for="Content"
+                      class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="SubjectId" class="form-label">
+                    Predmet
+                </label>
+
+                <select asp-for="SubjectId"
+                        class="form-select"
+                        asp-items="ViewBag.SubjectId">
+
+                    <option value="">
+                        -- Izaberite predmet --
+                    </option>
+
+                </select>
+
+                <span asp-validation-for="SubjectId"
+                      class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+
+                <label class="form-label">
+                    Dodaj PDF ili Word fajl
+                </label>
+
+                <input type="file"
+                       name="uploadedFile"
+                       class="form-control" />
+
+            </div>
+
+            <div class="form-check mb-4">
+
+                <input asp-for="IsImportant"
+                       class="form-check-input" />
+
+                <label asp-for="IsImportant"
+                       class="form-check-label">
+
+                    Označi kao važnu belešku
+
+                </label>
+
+            </div>
+
+            <button type="submit"
+                    class="btn btn-success">
+
+                Sačuvaj belešku
+
+            </button>
+
+            <a asp-action="Index"
+               class="btn btn-secondary">
+
+                Nazad
+
+            </a>
+
+        </form>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

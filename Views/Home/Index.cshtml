@@ -1,0 +1,122 @@
+﻿@{
+    ViewData["Title"] = "Početna";
+}
+
+<section class="hero-section">
+    <div class="container">
+
+        <div class="hero-card">
+
+            <div class="row align-items-center g-5">
+
+                <div class="col-lg-7">
+
+                    <span class="hero-badge">
+                        🎓 Moderna studentska platforma
+                    </span>
+
+                    <h1 class="hero-title mt-4">
+                        Organizuj svoje beleške brzo i jednostavno
+                    </h1>
+
+                    <p class="hero-text mt-4">
+                        StudyNotes omogućava studentima da čuvaju predmete,
+                        kreiraju beleške, organizuju učenje i lako pronađu važne informacije.
+                    </p>
+
+                    <div class="mt-4 d-flex flex-wrap gap-3">
+
+                        <a asp-controller="Subjects"
+                           asp-action="Index"
+                           class="btn btn-primary hero-btn">
+                            📚 Predmeti
+                        </a>
+
+                        <a asp-controller="Notes"
+                           asp-action="Index"
+                           class="btn btn-dark hero-btn">
+                            📝 Beleške
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-5 text-center">
+
+                    <div class="hero-emoji">
+                        📖
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row mt-5 g-4">
+
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+
+                    <h4>Organizacija predmeta</h4>
+
+                    <p>
+                        Dodaj i organizuj sve predmete koje slušaš tokom studija.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">📝</div>
+
+                    <h4>Čuvanje beleški</h4>
+
+                    <p>
+                        Sačuvaj važne informacije, zadatke i pripremu za ispite.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">⭐</div>
+
+                    <h4>Važne beleške</h4>
+
+                    <p>
+                        Označi najvažnije beleške i pronađi ih za nekoliko sekundi.
+                    </p>
+                </div>
+            </div>
+            <div class="row mt-5 g-4">
+
+    <div class="col-md-4">
+        <div class="stats-card">
+            <h2>@ViewBag.SubjectsCount</h2>
+            <p>📚 Predmeta</p>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="stats-card">
+            <h2>@ViewBag.NotesCount</h2>
+            <p>📝 Beleški</p>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="stats-card">
+            <h2>@ViewBag.ImportantNotesCount</h2>
+            <p>⭐ Važnih beleški</p>
+        </div>
+    </div>
+
+</div>
+
+        </div>
+
+    </div>
+</section>

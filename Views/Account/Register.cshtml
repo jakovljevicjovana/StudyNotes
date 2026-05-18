@@ -1,0 +1,110 @@
+@model StudyNotes.Models.RegisterViewModel
+
+@{
+    ViewData["Title"] = "Registracija";
+}
+
+<div class="auth-center-wrapper">
+
+    <div class="auth-modern-card">
+
+        <div class="auth-top text-center">
+
+            <div class="auth-logo">
+                📚
+            </div>
+
+            <h2 class="mt-3">Registracija</h2>
+
+            <p class="text-muted">
+                Kreiraj svoj StudyNotes nalog
+            </p>
+
+        </div>
+
+        <form asp-action="Register" method="post">
+
+            <div asp-validation-summary="ModelOnly"
+                 class="text-danger mb-3"></div>
+
+            <div class="mb-3">
+
+                <label asp-for="Email"
+                       class="form-label">
+                    Email adresa
+                </label>
+
+                <input asp-for="Email"
+                       class="form-control modern-input"
+                       placeholder="Unesite email adresu" />
+
+                <span asp-validation-for="Email"
+                      class="text-danger"></span>
+
+            </div>
+
+            <div class="mb-3">
+
+                <label asp-for="Password"
+                       class="form-label">
+                    Lozinka
+                </label>
+
+                <input asp-for="Password"
+                       type="password"
+                       class="form-control modern-input"
+                       placeholder="Unesite lozinku" />
+
+                <span asp-validation-for="Password"
+                      class="text-danger"></span>
+
+            </div>
+
+            <div class="mb-4">
+
+                <label asp-for="ConfirmPassword"
+                       class="form-label">
+                    Potvrda lozinke
+                </label>
+
+                <input asp-for="ConfirmPassword"
+                       type="password"
+                       class="form-control modern-input"
+                       placeholder="Ponovite lozinku" />
+
+                <span asp-validation-for="ConfirmPassword"
+                      class="text-danger"></span>
+
+            </div>
+
+            <button type="submit"
+                    class="btn modern-auth-btn w-100">
+
+                Registruj se
+
+            </button>
+
+            <div class="text-center mt-4">
+
+                Već imaš nalog?
+
+                <a asp-controller="Account"
+                   asp-action="Login">
+
+                    Prijavi se
+
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

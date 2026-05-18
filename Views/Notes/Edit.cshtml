@@ -1,0 +1,48 @@
+@model StudyNotes.Models.Note
+
+@{
+    ViewData["Title"] = "Izmeni belešku";
+}
+
+<div class="container mt-4">
+    <div class="container-box">
+        <h2 class="page-title">Izmeni belešku</h2>
+
+        <form asp-action="Edit" method="post">
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="CreatedAt" />
+
+            <div class="mb-3">
+                <label asp-for="Title" class="form-label">Naslov beleške</label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Content" class="form-label">Sadržaj beleške</label>
+                <textarea asp-for="Content" class="form-control" rows="6"></textarea>
+                <span asp-validation-for="Content" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="SubjectId" class="form-label">Predmet</label>
+                <select asp-for="SubjectId" class="form-select" asp-items="ViewBag.SubjectId"></select>
+                <span asp-validation-for="SubjectId" class="text-danger"></span>
+            </div>
+
+            <div class="form-check mb-4">
+                <input asp-for="IsImportant" class="form-check-input" />
+                <label asp-for="IsImportant" class="form-check-label">
+                    Važna beleška
+                </label>
+            </div>
+
+            <button type="submit" class="btn btn-success">Sačuvaj izmene</button>
+            <a asp-action="Index" class="btn btn-secondary">Nazad</a>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

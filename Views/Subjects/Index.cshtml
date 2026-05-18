@@ -1,0 +1,41 @@
+@model IEnumerable<StudyNotes.Models.Subject>
+
+@{
+    ViewData["Title"] = "Predmeti";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4">📚 Predmeti</h2>
+
+    <a asp-action="Create" class="btn btn-primary mb-3">+ Dodaj novi predmet</a>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info">
+            Trenutno nema dodatih predmeta.
+        </div>
+    }
+    else
+    {
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>Naziv predmeta</th>
+                    <th style="width: 250px;">Akcije</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var subject in Model)
+                {
+                    <tr>
+                        <td>@subject.Name</td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@subject.Id" class="btn btn-warning btn-sm">Izmeni</a>
+                            <a asp-action="Delete" asp-route-id="@subject.Id" class="btn btn-danger btn-sm">Obriši</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>

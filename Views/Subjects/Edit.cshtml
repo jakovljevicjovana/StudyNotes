@@ -1,0 +1,26 @@
+@model StudyNotes.Models.Subject
+
+@{
+    ViewData["Title"] = "Izmeni predmet";
+}
+
+<div class="container mt-4">
+    <h2>Izmeni predmet</h2>
+
+    <form asp-action="Edit" method="post">
+        <input type="hidden" asp-for="Id" />
+
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label">Naziv predmeta</label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-success">Sačuvaj izmene</button>
+        <a asp-action="Index" class="btn btn-secondary">Nazad</a>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

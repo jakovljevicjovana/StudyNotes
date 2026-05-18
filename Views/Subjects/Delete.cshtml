@@ -1,0 +1,21 @@
+@model StudyNotes.Models.Subject
+
+@{
+    ViewData["Title"] = "Obriši predmet";
+}
+
+<div class="container mt-4">
+    <h2>Obriši predmet</h2>
+
+    <div class="alert alert-danger">
+        Da li ste sigurni da želite da obrišete predmet:
+        <strong>@Model.Name</strong>?
+    </div>
+
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="Id" />
+
+        <button type="submit" class="btn btn-danger">Da, obriši</button>
+        <a asp-action="Index" class="btn btn-secondary">Odustani</a>
+    </form>
+</div>
